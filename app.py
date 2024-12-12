@@ -23,7 +23,7 @@ def index():
         return render_template("index.html", error=f"Erro ao fazer a requisição: {e}")
     except ValueError as json_error:
         return render_template("index.html", error=f"Erro ao processar JSON: {json_error}")
-    ##
+    ###
 
 
 if __name__ == "__main__":
