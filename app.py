@@ -16,7 +16,16 @@ def index():
         if cocijo_data:
             progress_percentage = cocijo_data['totalProgress'] * 100
             heart_progress_percentage = cocijo_data['heartProgress'] * 100
-            return render_template("index.html", cocijo=cocijo_data, progress=progress_percentage, heart_progress=heart_progress_percentage)
+            hearts_remaining = cocijo_data['heartsRemaining']
+            heart_progress_label = f"Progresso coração {9 - hearts_remaining}" if hearts_remaining <= 8 else "Coração desconhecido"
+            
+            return render_template(
+                "index.html",
+                cocijo=cocijo_data,
+                progress=progress_percentage,
+                heart_progress=heart_progress_percentage,
+                heart_progress_label=heart_progress_label
+            )
         else:
             return render_template("index.html", error="Nenhum objeto com o nome 'Cocijo' encontrado.")
     except requests.exceptions.RequestException as e:

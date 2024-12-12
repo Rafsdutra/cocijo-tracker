@@ -39,7 +39,8 @@
             <p><strong>Corações Restantes:</strong> {{ cocijo.heartsRemaining }}</p>
             <p><strong>Estado:</strong> {{ cocijo.state }}</p>
             <p><strong>Nível Cáustico:</strong> {{ cocijo.causticLevel }}</p>
-            <p><strong>Progresso coração atual:</strong> {{heart_progress|round(2)}}%</p>
+            <p><strong>{{ heart_progress_label }}:</strong> {{ heart_progress|round(2) }}%</p>
+
         {% endif %}
     </div>
 </body>
