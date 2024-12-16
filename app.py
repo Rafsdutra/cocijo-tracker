@@ -17,7 +17,7 @@ def index():
             progress_percentage = cocijo_data['totalProgress'] * 100
             heart_progress_percentage = cocijo_data['heartProgress'] * 100
             hearts_remaining = cocijo_data['heartsRemaining']
-            heart_progress_label = f"Progresso coração {9 - hearts_remaining}" if hearts_remaining <= 8 else "Coração desconhecido"
+            heart_progress_label = f"Progresso coração #{9 - hearts_remaining}" if hearts_remaining <= 8 else "Coração desconhecido"
             
             return render_template(
                 "index.html",
