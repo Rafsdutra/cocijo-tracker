@@ -27,6 +27,19 @@
         .error {
             color: red;
         }
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color:rgb(247, 92, 92);
+            color: white;
+        }
+        button:hover {
+            background-color:rgb(104, 3, 3);
+        }
     </style>
 </head>
 <body>
@@ -39,9 +52,28 @@
             <p><strong>Corações Restantes:</strong> {{ cocijo.heartsRemaining }}</p>
             <p><strong>Estado:</strong> {{ cocijo.state }}</p>
             <p><strong>Nível Cáustico:</strong> {{ cocijo.causticLevel }}</p>
-            <p><strong>{{ heart_progress_label }}:</strong> {{ heart_progress|round(2) }}%</p>
-
+            <p>
+                <strong>{{ heart_progress_label }}:</strong> 
+                <span id="heartProgressValue">{{ heart_progress|round(2) }}</span>% 
+                <button onclick="toggleHeartProgress()">Progressão/Vida restante</button>
+            </p>
         {% endif %}
     </div>
+
+    <script>
+        let isProgressMode = true;
+        const progressPercentage = {{ heart_progress|round(2) }};
+        const remainingPercentage = (100 - progressPercentage).toFixed(2);
+
+        function toggleHeartProgress() {
+            const heartProgressValue = document.getElementById('heartProgressValue');
+            if (isProgressMode) {
+                heartProgressValue.textContent = remainingPercentage;
+            } else {
+                heartProgressValue.textContent = progressPercentage;
+            }
+            isProgressMode = !isProgressMode;
+        }
+    </script>
 </body>
 </html>
