@@ -8,24 +8,27 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f9;
+            background-color: #121212; /* Dark background */
+            color: #FFA500; /* Orange text */
         }
         .container {
             max-width: 600px;
             margin: auto;
             padding: 20px;
-            background: white;
+            background: #1E1E1E; /* Slightly lighter dark background */
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border: 1px solid #FFA500; /* Orange border */
         }
         h1 {
             text-align: center;
+            color: #FFA500; /* Orange text for the heading */
         }
         p {
             font-size: 1.2em;
         }
         .error {
-            color: red;
+            color: red; /* Keep errors in red for visibility */
         }
         button {
             margin-left: 10px;
@@ -34,11 +37,18 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color:rgb(247, 92, 92);
-            color: white;
+            background-color: #FFA500; /* Orange background for button */
+            color: #121212; /* Dark text on the button */
         }
         button:hover {
-            background-color:rgb(104, 3, 3);
+            background-color: #FF8C00; /* Darker orange for hover effect */
+        }
+        a {
+            color: #FFA500;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -57,7 +67,7 @@
                 <span id="heartProgressValue">{{ heart_progress|round(2) }}</span>% 
                 <button onclick="toggleHeartProgress()">Progressão/Vida restante</button>
             </p>
-            <p><strong>Estimativa de conclusão (em horas:minutos): </strong>{{time_estimate}}</p>
+            <p>Estimativa de conclusão: <strong>{{ time_estimate }}</strong></p>
         {% endif %}
     </div>
 
