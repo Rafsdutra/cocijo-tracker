@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
-TWILIO_WHATSAPP_NUMBER = 'whatsapp:+14155238886'
+TWILIO_WHATSAPP_NUMBER = os.getenv('WPP_TWILLIO')
 YOUR_WHATSAPP_NUMBER = os.getenv('WPP')
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
@@ -45,7 +45,7 @@ def index():
             remaining_minutes = remainder // 60
             formatted_remaining_time = f"{int(remaining_hours):02}:{int(remaining_minutes):02}"
 
-            if heart_progress_percentage >= 40:
+            if heart_progress_percentage >= 90:
                 message_body = (
                     f"🚨 Acorda vagabundo: O progresso do coração atingiu {heart_progress_percentage:.2f}%!\n"
                     f"Estimativa de conclusão: {formatted_remaining_time}.\n"
